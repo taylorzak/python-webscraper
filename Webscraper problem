@@ -1,0 +1,34 @@
+I am trying to follow a simple tutorial making a web scraper. You use the site https://quotes.toscrape.com/ to see if it works. I am using Thonny for my Python code editor.
+I am following a short 7 minute youtube tutorial https://www.youtube.com/watch?v=QhD015WUMxE  and it looks easy. But no such case unfortunately.
+I am wondering if using vscode editor would be better and I could get the packages form there? I do have it. I ran it in vscode and it tells me ‘ModuleNotFoundError: No module named 'requests'
+But instead I get the common error message in the shell. No module named ‘bs4’ the guy in the video assumes you already have everything installed and is using a raspberry pi. But it can be done on windows.
+
+Here is the code:
+
+from bs4 import BeautifulSoup
+import requests
+
+page_to_scrape = requests.get("https://quotes.toscrape.com")
+soup = BeautifulSoup(page_to_scrape.text, "html.parser")
+#find the uqotes with the attribute tag text#
+quotes = soup.findAll("span", attrs={"class":"text"})
+#return all the author names to the list
+authors = soup.findAll("small", attrs={"class":"author"})
+
+#make a for loop  to loop through each quote in t he list
+for quote in quotes:
+    print(quote.text)
+for author in authors:
+    print(author.text)
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+But instead I get the common error message in the shell. No module named ‘bs4’ the guy in the video assumes you already have everything installed and is using a raspberry pi. But it can be done on windows.
+
+I have installed beautiful soup in windows command line and also installed virtualenv and created a folder my env. This is where I am losing the plot entirely.
+I found a command that creates the virtual environment, and it worked. These steps I found online. 
+1.	Install Python.
+2.	Install Flask by running “pip install flask” in the terminal or command prompt.
+3.	Create a virtual environment by running “python -m venv myenv”.
+4.	Activate the virtual environment by running “myenv\Scripts\activate.bat” on Windows or “source myenv/bin/activate” on macOS or Linux.
+
